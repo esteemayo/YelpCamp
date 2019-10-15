@@ -1,6 +1,6 @@
 const express = require('express');
 const router = express.Router();
-const Campground = require('../models/campgrounds');
+const Campground = require('../models/Campgrounds');
 const middleware = require('../middleware');
 const multer = require('multer');
 const storage = multer.diskStorage({
@@ -64,27 +64,8 @@ router.get('/', middleware.isLoggedIn, (req, res) => {
     }
 });
 
-// router.post('/', upload.single('image'), (req, res) => {
-//     cloudinary.uploader.upload(req.file.path, (result) => {
-//         const newData = {
-//             name: req.body.name,
-//             description: req.body.description,
-//             imageId: result.public_id,
-//             image: result.secure_url,
-//             author: {
-//                 id: req.user._id,
-//                 username: req.user.username
-//             }
-//         }
 
-//         new Campground(newData)
-//             .save()
-//             .then(campground => {
-//                 res.redirect('/campgrounds');
-//             });
-//     });
-// });
-
+// POST ROUTE/LOGIC
 router.post('/', upload.single('image'), (req, res) => {
     cloudinary.uploader.upload(req.file.path, (result) => {
         let name = req.body.name;
@@ -109,27 +90,6 @@ router.post('/', upload.single('image'), (req, res) => {
     });
 });
 
-
-// POST ROUTE
-// router.post('/', middleware.isLoggedIn, (req, res) => {
-//     let name = req.body.name;
-//     let price = req.body.price;
-//     let image = req.body.image;
-//     let desc = req.body.description;
-//     let author = {
-//         id: req.user._id,
-//         username: req.user.username
-//     }
-
-//     let newCampground = {name: name, price: price, image: image, description: desc, author: author}
-//     Campground.create(newCampground, (err, newlyCreated) => {
-//         if (err) {
-//             console.log(err);
-//         } else {
-//             res.redirect('/campgrounds');
-//         }
-//     });
-// });
 
 // NEW/ADD(FORM) CAMPGROUNDS ROUTE
 router.get('/new', middleware.isLoggedIn, (req, res) => {
@@ -184,19 +144,6 @@ router.put('/:id', upload.single('image'), (req, res) => {
     });
 });
 
-
-// UPDATE CAMPGROUND ROUTE
-// router.put('/:id', (req, res) => {
-//     Campground.findOneAndUpdate(req.params.id, req.body.campground, (err, updatedCampground) => {
-//         if (err) {
-//             res.redirect('/campgrounds');
-//         } else {
-//             req.flash('success', 'Campground updated!');
-//             res.redirect('/campgrounds/' + req.params.id);
-//         }
-//     });
-// });
-
 // DESTROY CAMPGROUND ROUTE
 router.delete('/:id', (req, res) => {
     Campground.findById(req.params.id, async (err, campground) => {
@@ -211,17 +158,6 @@ router.delete('/:id', (req, res) => {
         }
     });
 });
-
-// DESTROY CAMPGROUND ROUTE
-// router.delete('/:id', (req, res) => {
-//     Campground.findOneAndDelete(req.params.id, err => {
-//         if (err) {
-//             res.redirect('/campgrounds');
-//         } else {
-//             res.redirect('/campgrounds');
-//         }
-//     });
-// });
 
 function escapeRegex(text) {
     return text.replace(/[-[\]{}()*+?.,\\^$|#\s]/g, "\\$&");

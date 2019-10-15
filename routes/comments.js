@@ -1,7 +1,7 @@
 const express = require('express');
 const router = express.Router({mergeParams: true});
-const Campground = require('../models/campgrounds');
-const Comment = require('../models/comment');
+const Campground = require('../models/Campgrounds');
+const Comment = require('../models/Comment');
 const middleware = require('../middleware');
 
 // COMMENTS ROUTE
