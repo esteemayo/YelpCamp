@@ -145,18 +145,17 @@ router.put('/:id', upload.single('image'), (req, res) => {
 });
 
 // DESTROY CAMPGROUND ROUTE
-router.delete('/:id', (req, res) => {
-    Campground.findById(req.params.id, async (err, campground) => {
-        try {
-            await cloudinary.uploader.destroy(campground.imageId);
-            campground.remove();
-            req.flash('success', 'Campground Deleted Successfully!');
-            res.redirect('/campgrounds');
-        } catch (err) {
-            req.flash('error', err.message);
-            res.redirect('back');
-        }
-    });
+router.delete('/:id', async (req, res) => {
+    try {
+        const campground = await Campground.findById(req.params.id);
+        await cloudinary.uploader.destroy(campground.imageId);
+        campground.remove();
+        req.flash('success', 'Campground Deleted Successfully!');
+        res.redirect('/campgrounds');
+    } catch (err) {
+        req.flash('error', err.message);
+        res.redirect('back');
+    }
 });
 
 function escapeRegex(text) {
