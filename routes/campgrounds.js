@@ -139,7 +139,7 @@ router.put('/:id', upload.single('image'), (req, res) => {
             campground.description = req.body.description;
             campground.save();
             req.flash('success', 'Campground Updated Successfully!');
-            res.redirect('/campgrounds/' + campground._id);
+            res.redirect(`/campgrounds/${campground._id}`);
         }
     });
 });

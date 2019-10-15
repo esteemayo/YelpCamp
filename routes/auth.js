@@ -13,7 +13,7 @@ router.post('/', passport.authenticate('local', {
     failureRedirect: '/auth/login',
     failureFlash: true,
     successFlash: 'Welcome to YelpCamp!'
-}), (req, res) => {});
+}), (req, res) => { });
 
 
 module.exports = router;
