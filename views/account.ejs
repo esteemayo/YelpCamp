@@ -6,18 +6,28 @@
             <div class="thumbnail">
                 <h1><%= currentUser.fullName %> </h1>
                 <% if (currentUser.avatar) { %>
-                    <img src="/uploads/users/<%= currentUser.avatar %>" alt="<%= currentUser.fullName %>">
+                    <img src="/uploads/users/<%= currentUser.avatar %>" alt="<%= currentUser.fullName %>" title="<%= currentUser.fullName %>">
                     <% } else { %>
-                    <img src="<%= currentUser.gravatar %>" alt="<%= currentUser.fullName %>">
+                    <img src="<%= currentUser.gravatar %>" alt="<%= currentUser.fullName %>" title="<%= currentUser.fullName %>">
                 <% } %>
                 <div class="caption">
-                    <a href="mailto:<%= currentUser.email %>"><%= currentUser.email %></a>
+                    <h5><b>First Name:</b> <%= currentUser.firstName %></h5>
+                    <h5><b>Last Name:</b> <%= currentUser.lastName %></h5>
+                    <h5><b>Username:</b> <%= currentUser.username %></h5>
+                    <h5><b>Email Address:</b>
+                        <span>
+                            <a href="mailto:<%= currentUser.email %>"><%= currentUser.email %></a>
+                        </span>
+                    </h5>
+                    <% const date = currentUser.createdAt.toLocaleString('en-us', { month: 'long', year: 'numeric' }); %>
+                    <h5><b>Joined:</b> <time datetime="<%= currentUser.createdAt %>"><%= date %></time></h5>
+                    <h5><b>Campgrounds:</b> <%= campgrounds.length %></h5>
                 </div>
             </div>
             <br /><br />
 
             <div class="thumbnail">
-                <h1>Your account settings</h1>
+                <h1 class="account__header">Your account settings</h1>
                 <form action="/users/submit-user-data" method="POST" enctype="multipart/form-data">
                     <div class="form-group">
                         <label for="firstName">First Name</label>
@@ -48,7 +58,10 @@
 
         <div class="col-md-8">
             <h3>My campgrounds:</h3>
-            <ul>
+            <hr />
+            <% if (campgrounds.length === 0) { %>
+                <h3 class="text-center">No campground found</h3>
+            <% } else { %>
                 <% campgrounds.forEach(campground => { %>
                     <div class="col-md-4 col-sm-6">
                         <div class="thumbnail text-center">
@@ -62,7 +75,7 @@
                         </div>
                     </div>
                 <% }); %>
-            </ul>
+            <% } %>
         </div>
     </div>
 </div>
