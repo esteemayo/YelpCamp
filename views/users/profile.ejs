@@ -1,0 +1,70 @@
+<% include ../partials/header %>
+
+<div class="container">
+    <div class="row">
+        <div class="col-md-4">
+            <div class="thumbnail">
+                <h1 class="text-center"><%= user.fullName %></h1>
+                <% if (user.avatar) { %>
+                    <img src="/uploads/users/<%= user.avatar %>" alt="<%= user.fullName %>" title="<%= user.fullName %>">
+                <% } else { %>
+                    <img src="<%= user.gravatar %>" alt="<%= user.fullName %>" title="<%= user.fullName %>">
+                <% } %>
+            </div>
+                Lorem ipsum dolor sit amet consectetur adipisicing elit. Recusandae aut itaque doloribus, 
+                odio error placeat quaerat necessitatibus ipsum eveniet eaque, omnis ratione maxime quae 
+                soluta dolor suscipit quasi. Vel, vitae?
+
+                Lorem ipsum dolor sit amet consectetur adipisicing elit. Recusandae aut itaque doloribus, 
+                odio error placeat quaerat necessitatibus ipsum eveniet eaque, omnis ratione maxime quae 
+                soluta dolor suscipit quasi. Vel, vitae?
+            </div>
+
+            <div class="col-md-8">
+                <h3><%= user.fullName %>'s Profile:</h3>
+                <hr />
+                <div class="row">
+                    <div class="col-md-4">
+                        <h5>First Name:</h5>
+                        <h5>Last Name:</h5>
+                        <h5>Email Address:</h5>
+                        <h5>Username:</h5>
+                        <h5>Joined:</h5>
+                        <h5>Campgrounds:</h5>
+                    </div>
+                    <div class="col-md-4">
+                        <h5><%= user.firstName %></h5>
+                        <h5><%= user.lastName %></h5>
+                        <h5><a href="mailto:<%= user.email %>"><%= user.email %></a></h5>
+                        <h5><%= user.username %></h5>
+                        <% const date = user.createdAt.toLocaleString('en-us', { month: 'long', year: 'numeric' }); %> 
+                        <h5>
+                            <time datetime="<%= user.createdAt %>"><%= date %></time>
+                        </h5>
+                        <h5><%= campgrounds.length %></h5>
+                    </div>
+                </div>
+                <br />
+
+                <h3><%= user.fullName %>'s Campgrounds:</h3>
+                <hr />
+                <div class="row">
+                    <% campgrounds.forEach(campground => { %>
+                        <div class="col-md-4 col-sm-6">
+                            <div class="thumbnail text-center">
+                                <img class="campground-img" src="<%= campground.image %>" title="<%= campground.name %>">
+                                <div class="caption">
+                                    <h4><%= campground.name %></h4>
+                                </div>
+                                <p>
+                                    <a href="/campgrounds/<%= campground.slug %>" class="btn btn-primary">More Info</a>
+                                </p>
+                            </div>
+                        </div>
+                    <% }); %>
+                </div>
+            </div>
+    </div>
+</div>
+
+<% include ../partials/footer %>
