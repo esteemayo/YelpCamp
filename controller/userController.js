@@ -9,7 +9,7 @@ const catchErrors = require('../utils/catchErrors');
 exports.registerForm = (req, res) => {
     if (req.isAuthenticated()) return res.redirect('/');
 
-    res.render('register', {
+    res.status(200).render('register', {
         title: 'Register your account!'
     });
 }
@@ -33,7 +33,9 @@ exports.register = catchErrors(async (req, res, next) => {
     User.register(newUser, req.body.password, async (err, user) => {
         if (err) {
             req.flash('error', err.message);
-            return res.render('register', { title: 'Create your account!' });
+            return res.status(200).render('register', {
+                title: 'Create your account!'
+            });
         }
 
         try {
@@ -116,7 +118,7 @@ exports.userProfile = catchErrors(async (req, res, next) => {
     }
 
     res.status(200).render('users/profile', {
-        title: 'User profile!',
+        title: `${user.fullName}'s profile!`,
         campgrounds,
         user
     });
