@@ -11,7 +11,7 @@ const methodOverride = require('method-override');
 const mongoSanitize = require('express-mongo-sanitize');
 const User = require('../models/User');
 
-// REQUIRING ROUTES
+// Requiring routes
 const AppError = require('../utils/appError');
 const globalErrorHandler = require('../controller/errorController');
 const helpers = require('../helpers');
