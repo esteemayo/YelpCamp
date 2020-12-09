@@ -4,9 +4,12 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <meta http-equiv="X-UA-Compatible" content="ie=edge">
-    <title>YELPCAMP</title>
+    <title><%= h.siteName %> | <%= title %></title>
     <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/3.3.5/css/bootstrap.min.css">
     <link rel="stylesheet" href="/css/main.css">
+    <% if (currentPath === '/') { %>
+      <link rel="stylesheet" href="/css/landing.css">
+    <% } %>
 </head>
 <body>
     <nav class="navbar navbar-default">
@@ -29,7 +32,7 @@
                 <li><a href="/auth/login">Login</a></li>
                 <li><a href="/users/register">Sign Up</a></li>
               <% } else { %>
-                <li><a href="#">Signed In As <%= currentUser.username %></a></li>
+                <li><a href="/users/account/me">Signed In As <%= currentUser.username %></a></li>
                 <li><a href="/auth/logout">Logout</a></li>
               <% } %>
             </ul>
