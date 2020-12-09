@@ -1,13 +1,17 @@
 const mongoose = require('mongoose');
 
-let commentSchema= mongoose.Schema({
-    text: String,
+const commentSchema = new mongoose.Schema({
+    text: {
+        type: String,
+        required: [true, 'A comment cannot be empty.']
+    },
     author: {
         id: {
             type: mongoose.Schema.Types.ObjectId,
-            ref: 'User'
+            ref: 'User',
+            required: [true, 'A comment must belong to an author.']
         },
-        username: String
+        username: String,
     },
     date: {
         type: Date,
@@ -15,4 +19,6 @@ let commentSchema= mongoose.Schema({
     }
 });
 
-module.exports = mongoose.model('Comment', commentSchema);
+const Comment = mongoose.model('Comment', commentSchema);
+
+module.exports = Comment;
