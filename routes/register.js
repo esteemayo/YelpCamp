@@ -1,37 +1,31 @@
 const express = require('express');
+const userController = require('../controller/userController');
+const imageController = require('../controller/imageController');
+const { isLoggedIn } = require('../middleware/index');
+
 const router = express.Router();
-const passport = require('passport');
-const User = require('../models/User');
 
+// Show register form && handle sign up logic
+router
+    .route('/register')
+    .get(userController.registerForm)
+    .post( 
+        imageController.upload,
+        imageController.resize,
+        userController.register
+    );
 
-// SHOW REGISTER FORM
-router.get('/', (req, res) => {
-    res.render('register');
-});
+router.get('/register/verify-email', userController.verifyEmail);
 
-// HANDLE SIGN UP LOGIC
-router.post('/', (req, res) => {
-    let newUser = new User({
-        username: req.body.username,
-        firstName: req.body.firstName,
-        lastName: req.body.lastName,
-        email: req.body.email,
-        avatar: req.body.avatar
-    });
-    if (req.body.adminCode === 'secretcode123') {
-        newUser.isAdmin = true;
-    }
-    User.register(newUser, req.body.password, (err, user) => {
-        if (err) {
-            req.flash('error', err.message);
-            return res.render('register');
-        }
-        passport.authenticate('local')(req, res, () => {
-            req.flash('success', `Welcome to YelpCamp ${user.username}`);
-            res.redirect('/campgrounds');
-        });
-    });
-});
+router.get('/account/me', isLoggedIn, userController.account);
 
+router.post('/submit-user-data',
+    isLoggedIn,
+    imageController.upload,
+    imageController.resize,
+    userController.updateUserData
+);
+
+router.get('/:id', userController.userProfile);
 
 module.exports = router;

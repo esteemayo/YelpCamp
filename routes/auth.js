@@ -1,19 +1,29 @@
 const express = require('express');
+const { isNotVerified } = require('../middleware/index');
+const authController = require('../controller/authController');
+
 const router = express.Router();
-const passport = require('passport');
 
-// SHOW LOGIN FORM
-router.get('/', (req, res) => {
-    res.render('login');
-});
+// Show login form && handling login logic
+router
+    .route('/login')
+    .get(authController.loginForm)
+    .post(
+        isNotVerified,
+        authController.login
+    );
 
-// HANDLING LOGIN LOGIC
-router.post('/', passport.authenticate('local', {
-    successRedirect: '/campgrounds',
-    failureRedirect: '/auth/login',
-    failureFlash: true,
-    successFlash: 'Welcome to YelpCamp!'
-}), (req, res) => { });
+// Logout route
+router.get('/logout', authController.logout);
 
+router
+    .route('/forgot')
+    .get(authController.forgotForm)
+    .post(authController.forgotPassword);
+
+router
+    .route('/reset/:token')
+    .get(authController.reset)
+    .post(authController.resetPassword);
 
 module.exports = router;
