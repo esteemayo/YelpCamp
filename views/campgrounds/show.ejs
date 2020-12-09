@@ -13,17 +13,22 @@
         </div>
         <div class="col-md-9">
             <div class="thumbnail">
-                <img class="img-responsive" src="<%= campground.image %>">
+                <img class="img-responsive" src="<%= campground.image %>" alt="<%= campground.name %>" title="<%= campground.name %>">
                 <div class="caption-full">
                     <h4 class="pull-right">$<%= campground.price %>/night</h4>
                     <h4><a href=""><%= campground.name %></a></h4>
                     <p><%= campground.description %></p>
                     <p>
-                        <em>Submitted By <a href="/users/<%= campground.author.id %>"><%= campground.author.username %></a> <span><%= campground.date.toLocaleDateString() %></span></em>
+                        <em>Submitted By 
+                            <a href="/users/<%= campground.author.id %>"><%= campground.author.username %></a> on 
+                            <span>
+                                <time datetime="<%= campground.date %>"><%= campground.date.toLocaleDateString() %></time>
+                            </span>
+                        </em>
                     </p>
                     <% if(currentUser && campground.author.id.equals(currentUser._id) || currentUser && currentUser.isAdmin) { %>
                         <a class="btn btn-xs btn-warning" href="/campgrounds/<%= campground._id %>/edit">Edit</a>
-                        <form id="delete-form" action="/campgrounds/<%= campground._id %>?_method=DELETE" method="post">
+                        <form id="delete-form" action="/campgrounds/<%= campground._id %>?_method=DELETE" method="POST">
                             <button class="btn btn-xs btn-danger">Delete</button>
                         </form>
                     <% } %>
@@ -41,13 +46,15 @@
                         <div class="row">
                             <div class="col-md-12">
                                 <strong><%= comment.author.username %></strong>
-                                <span class="pull-right"><%= comment.date.toDateString() %></span>
+                                <span class="pull-right">
+                                    <time datetime="<%= comment.date %>"><%= h.moment(comment.date).fromNow() %></time>
+                                </span>
                                 <p>
                                     <%= comment.text %>
                                 </p>
                                 <% if (currentUser && comment.author.id.equals(currentUser._id) || currentUser && currentUser.isAdmin) { %>
                                     <a href="/campgrounds/<%= campground._id%>/comments/<%= comment._id%>/edit" class="btn btn-xs btn-warning">Edit</a>
-                                    <form id="delete-comment-form" action="/campgrounds/<%= campground._id%>/comments/<%= comment._id%>?_method=DELETE" method="post">
+                                    <form id="delete-comment-form" action="/campgrounds/<%= campground._id%>/comments/<%= comment._id%>?_method=DELETE" method="POST">
                                         <input class="btn btn-xs btn-danger" type="submit" value="Delete">
                                     </form>
                                 <% } %>
