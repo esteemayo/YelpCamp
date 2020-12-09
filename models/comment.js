@@ -8,8 +8,7 @@ const commentSchema = new mongoose.Schema({
     author: {
         id: {
             type: mongoose.Schema.Types.ObjectId,
-            ref: 'User',
-            required: [true, 'A comment must belong to an author.']
+            ref: 'User'
         },
         username: String,
     },
