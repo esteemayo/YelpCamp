@@ -26,6 +26,6 @@ router.post('/submit-user-data',
     userController.updateUserData
 );
 
-router.get('/:id', userController.userProfile);
+router.get('/:username', userController.userProfile);
 
 module.exports = router;

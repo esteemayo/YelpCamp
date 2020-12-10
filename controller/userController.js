@@ -110,8 +110,8 @@ exports.updateUserData = catchErrors(async (req, res, next) => {
 });
 
 exports.userProfile = catchErrors(async (req, res, next) => {
-    const user = await User.findById(req.params.id);
-    const campgrounds = await Campground.find({ 'author.id': req.params.id });
+    const user = await User.findOne({ username: req.params.username });
+    const campgrounds = await Campground.find({ 'author.username': user.username });
 
     if (!user) {
         return next(new AppError('No user found with that ID', 400));

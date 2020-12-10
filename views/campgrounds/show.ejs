@@ -20,7 +20,7 @@
                     <p><%= campground.description %></p>
                     <p>
                         <em>Submitted By 
-                            <a href="/users/<%= campground.author.id %>"><%= campground.author.username %></a> on 
+                            <a href="/users/<%= campground.author.username %>"><%= campground.author.username %></a> on 
                             <span>
                                 <time datetime="<%= campground.date %>"><%= campground.date.toLocaleDateString() %></time>
                             </span>
