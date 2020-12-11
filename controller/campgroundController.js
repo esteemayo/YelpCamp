@@ -1,6 +1,6 @@
 const multer = require('multer');
 const cloudinary = require('cloudinary');
-const Campground = require('../models/Campgrounds');
+const Campground = require('../models/Campground');
 const AppError = require('../utils/appError');
 const catchErrors = require('../utils/catchErrors');
 

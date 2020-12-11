@@ -3,7 +3,7 @@ const crypto = require('crypto');
 const User = require('../models/User');
 const sendMail = require('../utils/mail');
 const AppError = require('../utils/appError');
-const Campground = require('../models/Campgrounds');
+const Campground = require('../models/Campground');
 const catchErrors = require('../utils/catchErrors');
 
 exports.registerForm = (req, res) => {

@@ -1,6 +1,6 @@
 const Comment = require('../models/Comment');
 const AppError = require('../utils/appError');
-const Campground = require('../models/Campgrounds');
+const Campground = require('../models/Campground');
 const catchErrors = require('../utils/catchErrors');
 
 exports.getComment = catchErrors(async (req, res, next) => {

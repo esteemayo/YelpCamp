@@ -8,7 +8,7 @@ const router = express.Router({ mergeParams: true });
 router
     .route('/new')
     .get(
-        middleware.isLoggedIn, 
+        middleware.isLoggedIn,
         commentController.getComment
     );
 

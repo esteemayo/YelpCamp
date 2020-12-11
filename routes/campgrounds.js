@@ -8,11 +8,11 @@ const router = express.Router();
 router
     .route('/')
     .get(
-        middleware.isLoggedIn, 
+        middleware.isLoggedIn,
         campgroundController.getAllCampgrounds
     )
     .post(
-        campgroundController.upload, 
+        campgroundController.upload,
         campgroundController.createCampground
     );
 
@@ -20,7 +20,7 @@ router
 router
     .route('/new')
     .get(
-        middleware.isLoggedIn, 
+        middleware.isLoggedIn,
         campgroundController.add
     );
 
@@ -31,7 +31,7 @@ router.get('/:slug', campgroundController.getCampgroundBySlug);
 router
     .route('/:id/edit')
     .get(
-        middleware.checkCampgroundOwnership, 
+        middleware.checkCampgroundOwnership,
         campgroundController.editCampground
     );
 
@@ -39,7 +39,7 @@ router
 router
     .route('/:id')
     .put(
-        campgroundController.upload, 
+        campgroundController.upload,
         campgroundController.updateCampground
     )
     .delete(
