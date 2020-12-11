@@ -1,0 +1,69 @@
+<div class="container">
+    <div class="row">
+        <div class="col-md-4">
+            <div class="thumbnail">
+                <h1>fullName</h1>
+                <img src="/uploads/users/avatar" alt="fullName" title="fullName">
+                <img src="gravatar" alt="fullName" title="fullName">
+                <div class="caption">
+                    <h5><b>First Name:</b> firstName</h5>
+                    <h5><b>Last Name:</b> lastName</h5>
+                    <h5><b>Username:</b> username></h5>
+                    <h5><b>Email Address:</b>
+                        <span>
+                            <a href="mailto:email">email</a>
+                        </span>
+                    </h5>
+                    <h5><b>Joined:</b> <time datetime="date">date</time></h5>
+                    <h5><b>Campgrounds:</b> Campground's length</h5>
+                </div>
+            </div>
+            <br /><br />
+
+            <div class="thumbnail">
+                <h1 class="account__header">Your account settings</h1>
+                <form action="/users/submit-user-data" method="POST" enctype="multipart/form-data">
+                    <div class="form-group">
+                        <label for="firstName">First Name</label>
+                        <input class="form-control" type="text" name="firstName" id="firstName" value="user">
+                    </div>
+
+                    <div class="form-group">
+                        <label for="lastName">Last Name</label>
+                        <input class="form-control" type="text" name="lastName" id="lastName" value="user">
+                    </div>
+
+                    <div class="form-group">
+                        <label for="email">Email</label>
+                        <input class="form-control" type="email" name="email" id="email" value="user">
+                    </div>
+                        
+                    <div class="form-group">
+                        <label for="avatar">Avatar</label>
+                        <input class="form-control" type="file" name="avatar" id="avatar" accept="image/*">
+                    </div>
+
+                    <div class="form-group">
+                        <button class="btn btn-primary btn-block" type="submit">Save settings</button>
+                    </div>
+                </form>
+            </div>
+        </div>
+
+        <div class="col-md-8">
+            <h3>My campgrounds:</h3>
+            <hr />
+            <div class="col-md-4 col-sm-6">
+                <div class="thumbnail text-center">
+                    <img class="campground-img" src="" alt="Campground name" title="Campground name">
+                    <div class="caption">
+                        <h4>Campground name</h4>
+                    </div>
+                    <p>
+                        <a href="/campgrounds/slug" class="btn btn-primary">More Info</a>
+                    </p>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>

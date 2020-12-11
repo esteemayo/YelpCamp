@@ -1,0 +1,209 @@
+[
+  {
+    "author": {
+      "id": "5fc4eeadccbb8a30bc4985f3",
+      "username": "jdoe"
+    },
+    "comments": [
+      "5fd0204e2eb72535a806c8ab",
+      "5fd0fc75195fc404dcfeebf3",
+      "5fd12216195fc404dcfeebfd"
+    ],
+    "_id": "5da525c62c44de29a8cdcfa4",
+    "name": "Mountain Hill",
+    "price": 12,
+    "description": "Sed elit libero, convallis et suscipit rhoncus, aliquet sed est",
+    "image": "https://res.cloudinary.com/learnhowtocode/image/upload/v1571104211/ih2inp04yrbimbqf4hyg.jpg",
+    "imageId": "ih2inp04yrbimbqf4hyg"
+  },
+  {
+    "author": {
+      "id": "5fcd408d501b94419ce54805",
+      "username": "leo"
+    },
+    "comments": [
+      "5fd1216b195fc404dcfeebf9",
+      "5fd133404a86073ee0848069",
+      "5fd134a54a86073ee084806e"
+    ],
+    "_id": "5fcd760440f39d08289cfcdd",
+    "name": "Cloud's Rest",
+    "price": 12,
+    "description": "Neque porro quisquam est, qui dolorem ipsum quia dolor sit amet, consectetur, adipisci velit, sed quia non numquam eius modi tempora incidunt ut labore et dolore magnam aliquam quaerat voluptatem.",
+    "image": "https://res.cloudinary.com/learnhowtocode/image/upload/v1607300637/de1ngzlxy5anjlzyuiqn.jpg",
+    "imageId": "de1ngzlxy5anjlzyuiqn"
+  },
+  {
+    "author": {
+      "id": "5fcd31c40748a00ae49850f4",
+      "username": "jennifer"
+    },
+    "comments": [
+      "5fce24806fb2f645fcd21855",
+      "5fce605f16246347dc17db5c",
+      "5fce614c424b2b54fc657f5d",
+      "5fce669a738f5703e89887f8",
+      "5fd12275195fc404dcfeebfe",
+      "5fd130fb4a86073ee0848061"
+    ],
+    "_id": "5fce1008e976c454bcc55425",
+    "name": "Desert Mesa",
+    "price": 15,
+    "description": "Neque porro quisquam est, qui dolorem ipsum quia dolor sit amet, consectetur, adipisci velit, sed quia non numquam eius modi tempora incidunt ut labore et dolore magnam aliquam quaerat voluptatem. Neque porro quisquam est, qui dolorem ipsum quia dolor sit amet, consectetur, adipisci velit, sed quia non numquam eius modi tempora incidunt ut labore et dolore magnam aliquam quaerat voluptatem.",
+    "image": "https://res.cloudinary.com/learnhowtocode/image/upload/v1607340065/i8qppdjbzox7qrgx3a6j.jpg",
+    "imageId": "i8qppdjbzox7qrgx3a6j"
+  },
+  {
+    "author": {
+      "id": "5fcd31c40748a00ae49850f4",
+      "username": "jennifer"
+    },
+    "comments": [
+      "5fd10015195fc404dcfeebf4",
+      "5fd133544a86073ee084806a",
+      "5fd134b34a86073ee084806f"
+    ],
+    "_id": "5fcef259399d9050585710ec",
+    "name": "Canyon Floor",
+    "price": 100,
+    "description": "Maecenas elementum ultricies enim eget hendrerit",
+    "image": "https://res.cloudinary.com/learnhowtocode/image/upload/v1607398002/x2jmwojmi066axyeaahq.jpg",
+    "imageId": "x2jmwojmi066axyeaahq"
+  },
+  {
+    "author": {
+      "id": "5fc4efc5ccbb8a30bc4985f4",
+      "username": "mdoe"
+    },
+    "comments": [
+      "5fd0fba1195fc404dcfeebf1",
+      "5fd131164a86073ee0848062",
+      "5fd1352b4a86073ee0848070"
+    ],
+    "_id": "5fd0f652195fc404dcfeebe8",
+    "name": "Forest Hike",
+    "price": 99,
+    "description": "Neque porro quisquam est, qui dolorem ipsum quia dolor sit amet, consectetur, adipisci velit, sed quia non numquam eius modi tempora incidunt ut labore et dolore magnam aliquam quaerat voluptatem. Neque porro quisquam est, qui dolorem ipsum quia dolor sit amet, consectetur, adipisci velit, sed quia non numquam eius modi tempora incidunt ut labore et dolore magnam aliquam quaerat voluptatem. Neque porro quisquam est, qui dolorem ipsum quia dolor sit amet, consectetur, adipisci velit, sed quia non numquam eius modi tempora incidunt ut labore et dolore magnam aliquam quaerat voluptatem.",
+    "image": "https://res.cloudinary.com/learnhowtocode/image/upload/v1607530092/ezbkdarpirp2m8dh9kgm.jpg",
+    "imageId": "ezbkdarpirp2m8dh9kgm"
+  },
+  {
+    "author": {
+      "id": "5fc4efc5ccbb8a30bc4985f4",
+      "username": "mdoe"
+    },
+    "comments": [
+      "5fd0fb27195fc404dcfeebef",
+      "5fd1330a4a86073ee0848068",
+      "5fd1347b4a86073ee084806d"
+    ],
+    "_id": "5fd0f693195fc404dcfeebe9",
+    "name": "Camp On Hills",
+    "price": 55,
+    "description": "Sed elit libero, convallis et suscipit rhoncus, aliquet sed est. Neque porro quisquam est, qui dolorem ipsum quia dolor sit amet, consectetur, adipisci velit, sed quia non numquam eius modi tempora incidunt ut labore et dolore magnam aliquam quaerat voluptatem!",
+    "image": "https://res.cloudinary.com/learnhowtocode/image/upload/v1607530157/fzu9yw2giakhtbmwoxar.jpg",
+    "imageId": "fzu9yw2giakhtbmwoxar"
+  },
+  {
+    "author": {
+      "id": "5fcf777948cfbf5c9cdd125d",
+      "username": "chris"
+    },
+    "comments": [
+      "5fd121cf195fc404dcfeebfb",
+      "5fd130d44a86073ee084805f",
+      "5fd132db4a86073ee0848067"
+    ],
+    "_id": "5fd0f725195fc404dcfeebea",
+    "name": "Camp On Mountains",
+    "price": 79,
+    "description": "Lorem Ipsum is simply dummy text of the printing and typesetting. Neque porro quisquam est, qui dolorem ipsum quia dolor sit amet, consectetur, adipisci velit, sed quia non numquam eius modi tempora incidunt ut labore et dolore magnam aliquam quaerat voluptatem.",
+    "image": "https://res.cloudinary.com/learnhowtocode/image/upload/v1607530303/g03qgp6u23st2mkqjdgd.jpg",
+    "imageId": "g03qgp6u23st2mkqjdgd"
+  },
+  {
+    "author": {
+      "id": "5fcf777948cfbf5c9cdd125d",
+      "username": "chris"
+    },
+    "comments": [
+      "5fd120c9195fc404dcfeebf6",
+      "5fd130e34a86073ee0848060",
+      "5fd131ed4a86073ee0848066"
+    ],
+    "_id": "5fd0f774195fc404dcfeebeb",
+    "name": "Camp Eminado",
+    "price": 100,
+    "description": "Maecenas elementum ultricies enim eget hendrerit. Neque porro quisquam est, qui dolorem ipsum quia dolor sit amet, consectetur, adipisci velit, sed quia non numquam eius modi tempora incidunt ut labore et dolore magnam aliquam quaerat voluptatem, neque porro quisquam est, qui dolorem ipsum quia dolor sit amet, consectetur, adipisci velit, sed quia non numquam eius modi tempora incidunt ut labore et dolore magnam aliquam quaerat voluptatem.",
+    "image": "https://res.cloudinary.com/learnhowtocode/image/upload/v1607530382/nwfi812r0yvn6jvqk3kv.jpg",
+    "imageId": "nwfi812r0yvn6jvqk3kv"
+  },
+  {
+    "author": {
+      "id": "5fc4eeadccbb8a30bc4985f3",
+      "username": "jdoe"
+    },
+    "comments": [
+      "5fd0fab5195fc404dcfeebed",
+      "5fd12149195fc404dcfeebf8",
+      "5fd131c64a86073ee0848065"
+    ],
+    "_id": "5fd0f81d195fc404dcfeebec",
+    "name": "Camp Mexico",
+    "price": 120,
+    "description": "Sed elit libero, convallis et suscipit rhoncus, aliquet sed est. Lorem ipsum dolor sit amet consectetur adipisicing elit. Recusandae aut itaque doloribus, odio error placeat quaerat necessitatibus ipsum eveniet eaque, omnis ratione maxime quae soluta dolor suscipit quasi. Vel, vitae? Lorem ipsum dolor sit amet consectetur adipisicing elit. Recusandae aut itaque doloribus, odio error placeat quaerat necessitatibus ipsum eveniet eaque, omnis ratione maxime quae soluta dolor suscipit quasi Vel vitae...",
+    "image": "https://res.cloudinary.com/learnhowtocode/image/upload/v1607530551/g9jfddvvcmauzqtqxobg.jpg",
+    "imageId": "g9jfddvvcmauzqtqxobg"
+  },
+  {
+    "author": {
+      "id": "5fce15ce4343e454e4abe26e",
+      "username": "alice"
+    },
+    "comments": [
+      "5fd130bb4a86073ee084805d",
+      "5fd1356d4a86073ee0848071",
+      "5fd136f04a86073ee0848074"
+    ],
+    "_id": "5fd12d244a86073ee0848059",
+    "name": "Forest Camp",
+    "price": 25,
+    "description": "Neque porro quisquam est, qui dolorem ipsum quia dolor sit amet, consectetur, adipisci velit, sed quia non numquam eius modi tempora incidunt ut labore et dolore magnam aliquam quaerat voluptatem.",
+    "image": "https://res.cloudinary.com/learnhowtocode/image/upload/v1607544127/vv0ekh2rzt1svfewvfj1.jpg",
+    "imageId": "vv0ekh2rzt1svfewvfj1"
+  },
+  {
+    "author": {
+      "id": "5fce15ce4343e454e4abe26e",
+      "username": "alice"
+    },
+    "comments": [
+      "5fd133a94a86073ee084806b",
+      "5fd135bb4a86073ee0848072",
+      "5fd137184a86073ee0848075"
+    ],
+    "_id": "5fd12d584a86073ee084805a",
+    "name": "Bikers Camp",
+    "price": 79,
+    "description": "Sed elit libero, convallis et suscipit rhoncus, aliquet sed est",
+    "image": "https://res.cloudinary.com/learnhowtocode/image/upload/v1607544178/jrz4b4srnrvorlxeajdg.jpg",
+    "imageId": "jrz4b4srnrvorlxeajdg"
+  },
+  {
+    "author": {
+      "id": "5fd12c314a86073ee0848058",
+      "username": "loulou"
+    },
+    "comments": [
+      "5fd1316a4a86073ee0848063",
+      "5fd135e94a86073ee0848073",
+      "5fd1374b4a86073ee0848076"
+    ],
+    "_id": "5fd12de24a86073ee084805b",
+    "name": "New Island Camp",
+    "price": 200,
+    "description": "Neque porro quisquam est, qui dolorem ipsum quia dolor sit amet, consectetur, adipisci velit, sed quia non numquam eius modi tempora incidunt ut labore et dolore magnam aliquam quaerat voluptatem.Neque porro quisquam est, qui dolorem ipsum quia dolor sit amet, consectetur, adipisci velit, sed quia non numquam eius modi tempora incidunt ut labore et dolore magnam aliquam quaerat voluptatem.",
+    "image": "https://res.cloudinary.com/learnhowtocode/image/upload/v1607544317/dwkforcvvrgwdrtkgied.jpg",
+    "imageId": "dwkforcvvrgwdrtkgied"
+  }
+]
