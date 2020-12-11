@@ -1,5 +1,5 @@
 const catchErrors = require('../utils/catchErrors');
-const Campground = require('../models/Campgrounds');
+const Campground = require('../models/Campground');
 const Comment = require('../models/Comment');
 const User = require('../models/User');
 
