@@ -45,7 +45,7 @@ exports.getAllCampgrounds = catchErrors(async(req, res, next) => {
         const regex = new RegExp(escapeRegex(req.query.search), 'gi');
     
         const page = req.params.page * 1 || 1;
-        const limit = 12;
+        const limit = 8;
         const skip = (page - 1) * limit;
 
         const campgroundsPromise = Campground
