@@ -38,6 +38,25 @@
             </div>
         <% }); %>
     </div>
+    <nav aria-label="...">
+        <ul class="pager">
+            <% if (page > 1) { %>
+                <li class="previous">
+                    <a href="/campgrounds/page/<%= parseFloat(page - 1) %> "><span aria-hidden="true">&larr;</span> Prev</a>
+                </li>
+            <% } %>
+
+            <li>
+                <a>Page <%= page %> of <%= pages %> &mdash; <%= count %> total results</a>
+            </li>
+
+            <% if (page < pages) { %>
+                <li class="next">
+                    <a href="/campgrounds/page/<%= parseFloat(page + 1) %>">Next <span aria-hidden="true">&rarr;</span></a>
+                </li>
+            <% } %>
+        </ul>
+      </nav>
 </div>
 
 <% include ../partials/footer %>
