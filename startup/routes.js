@@ -75,6 +75,7 @@ module.exports = app => {
         res.locals.currentUser = req.user;
         res.locals.error = req.flash('error');
         res.locals.success = req.flash('success');
+        res.locals.info = req.flash('info');
         res.locals.currentPath = req.originalUrl;
         res.locals.h = helpers;
         next();

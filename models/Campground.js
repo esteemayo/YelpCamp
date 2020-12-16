@@ -5,7 +5,6 @@ const campgroundSchema = new mongoose.Schema({
     name: {
         type: String,
         required: [true, 'A campground must have a name'],
-        unique: true,
         trim: true,
         maxlength: [50, 'A campground name must have less or equal than 50 characters'],
         minlength: [5, 'A campground name must have more or equal than 5 characters']
