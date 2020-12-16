@@ -16,6 +16,11 @@ router
         campgroundController.createCampground
     );
 
+router.get('/page/:page',
+        middleware.isLoggedIn,
+        campgroundController.getAllCampgrounds
+);
+
 // Get new campground form route
 router
     .route('/new')

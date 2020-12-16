@@ -43,7 +43,27 @@ exports.getAllCampgrounds = catchErrors(async(req, res, next) => {
     let noMatch = null;
     if (req.query.search) {
         const regex = new RegExp(escapeRegex(req.query.search), 'gi');
-        const campgrounds = await Campground.find({ 'name': regex });
+    
+        const page = req.params.page * 1 || 1;
+        const limit = 12;
+        const skip = (page - 1) * limit;
+
+        const campgroundsPromise = Campground
+            .find({ 'name': regex })
+            .skip(skip)
+            .limit(limit)
+            .sort('-date');
+
+        const countPromise = Campground.countDocuments();
+
+        const [campgrounds, count] = await Promise.all([campgroundsPromise, countPromise]);
+
+        const pages = Math.ceil(count / limit);
+
+        if (!campgrounds.length && skip) {
+            req.flash('info', `Hey! You asked for page ${page}. But that doesn't exist. So I put you on page ${pages}`);
+            return res.redirect(`/campgrounds/page/${pages}`);
+        }
 
         if (campgrounds.length < 1) {
             return noMatch = 'No campgrounds match that query, please try again.'
@@ -51,15 +71,40 @@ exports.getAllCampgrounds = catchErrors(async(req, res, next) => {
         return res.status(200).render('campgrounds/index', {
             title: 'Campgrounds',
             campgrounds,
+            count,
+            pages,
+            page,
             noMatch
         });
     }
+    const page = req.params.page * 1 || 1;
+    const limit = 8;
+    const skip = (page - 1) * limit;
+
     // get all campgrounds from the DB
-    const campgrounds = await Campground.find();
+    const campgroundsPromise = Campground
+        .find()
+        .skip(skip)
+        .limit(limit)
+        .sort('-date');
+
+    const countPromise = Campground.countDocuments();
+
+    const [campgrounds, count] = await Promise.all([campgroundsPromise, countPromise]);
+
+    const pages = Math.ceil(count / limit);
+
+    if (!campgrounds.length && skip) {
+        req.flash('info', `Hey! You asked for page ${page}. But that doesn't exist. So I put you on page ${pages}`);
+        return res.redirect(`/campgrounds/page/${pages}`);
+    }
 
     return res.status(200).render('campgrounds/index', {
         title: 'Campgrounds',
         campgrounds,
+        count,
+        pages,
+        page,
         noMatch
     });
 });
