@@ -88,7 +88,8 @@ exports.account = catchErrors(async (req, res, next) => {
     const campgrounds = await Campground
         .find()
         .where('author.id')
-        .equals(req.user._id);
+        .equals(req.user._id)
+        .sort('-date');
 
     res.status(200).render('account', {
         title: 'User account settings',
@@ -111,7 +112,9 @@ exports.updateUserData = catchErrors(async (req, res, next) => {
 
 exports.userProfile = catchErrors(async (req, res, next) => {
     const user = await User.findOne({ username: req.params.username });
-    const campgrounds = await Campground.find({ 'author.username': user.username });
+    const campgrounds = await Campground
+        .find({ 'author.username': user.username })
+        .sort('-date');
 
     if (!user) {
         return next(new AppError('No user found with that ID', 400));
