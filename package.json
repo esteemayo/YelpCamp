@@ -27,7 +27,7 @@
     "express-mongo-sanitize": "^2.0.1",
     "express-session": "^1.15.6",
     "helmet": "^4.2.0",
-    "lodash": "^4.17.20",
+    "lodash": "^4.17.21",
     "md5": "^2.3.0",
     "method-override": "^3.0.0",
     "moment": "^2.29.1",
