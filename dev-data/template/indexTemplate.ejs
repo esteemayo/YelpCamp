@@ -1,35 +1,35 @@
 <div class="container">
-    <header class="jumbotron">
-        <div class="container">
-            <h1>Welcome to YelpCamp</h1>
-            <p>View our hand-picked campgrounds from all over the world</p>
-            <p>
-                <a class="btn btn-primary btn-lg" href="/campgrounds/new">Add New Campground</a>
-            </p>
-            <p>
-                <form action="/campgrounds" method="GET" class="form-inline">
-                    <div class="form-group">
-                        <input class="form-control" type="search" name="search" placeholder="Campgrounds search.....">
-                        <input class="btn btn-default" type="submit" value="Search">
-                    </div>
-                </form>
-            </p>
-        </div>
-    </header>
-    <div class="row text-center" style="display: flex; flex-wrap: wrap;">
-        <div class="col-md-12">
-                <h3>No Match</h3>
-        </div>
-            <div class="col-md-3 col-sm-6">
-                <div class="thumbnail">
-                    <img class="campground-img" src="/images/campground-1.jpg" alt="Campground name" title="Campground name">
-                    <div class="caption">
-                        <h4>Name</h4>
-                    </div>
-                    <p>
-                        <a href="/campgrounds/slug" class="btn btn-primary">More Info</a>
-                    </p>
-                </div>
-            </div>
+  <header class="jumbotron">
+    <div class="container">
+      <h1>Welcome to YelpCamp</h1>
+      <p>View our hand-picked campgrounds from all over the world</p>
+      <p>
+        <a class="btn btn-primary btn-lg" href="/campgrounds/new">Add New Campground</a>
+      </p>
+      <p>
+        <form action="/campgrounds" method="GET" class="form-inline">
+          <div class="form-group">
+            <input class="form-control" type="search" name="search" placeholder="Campgrounds search.....">
+            <input class="btn btn-default" type="submit" value="Search">
+          </div>
+        </form>
+      </p>
     </div>
+  </header>
+  <div class="row text-center" style="display: flex; flex-wrap: wrap;">
+    <div class="col-md-12">
+      <h3>No Match</h3>
+    </div>
+    <div class="col-md-3 col-sm-6">
+      <div class="thumbnail">
+        <img class="campground-img" src="/images/campground-1.jpg" alt="Campground name" title="Campground name">
+        <div class="caption">
+          <h4>Name</h4>
+        </div>
+        <p>
+          <a href="/campgrounds/slug" class="btn btn-primary">More Info</a>
+        </p>
+      </div>
+    </div>
+  </div>
 </div>
