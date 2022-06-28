@@ -1,17 +1,18 @@
 const express = require('express');
 const path = require('path');
 const xss = require('xss-clean');
-const morgan = require('morgan');
-const helmet = require('helmet');
-const passport = require('passport');
 const flash = require('connect-flash');
-const compression = require('compression');
-const localStrategy = require('passport-local');
-const methodOverride = require('method-override');
+const morgan = require('morgan');
 const mongoSanitize = require('express-mongo-sanitize');
-const User = require('../models/User');
+const helmet = require('helmet');
+const localStrategy = require('passport-local');
+const compression = require('compression');
+const passport = require('passport');
+const methodOverride = require('method-override');
+const { StatusCodes } = require('http-status-codes');
 
-// Requiring routes
+// requiring routes
+const User = require('../models/User');
 const AppError = require('../utils/appError');
 const globalErrorHandler = require('../controller/errorController');
 const helpers = require('../helpers');
@@ -21,75 +22,83 @@ const landing = require('../routes/landing');
 const register = require('../routes/register');
 const auth = require('../routes/auth');
 
-module.exports = app => {
-    app.set('view engine', 'ejs');
+module.exports = (app) => {
+  app.set('view engine', 'ejs');
 
-    if (app.get('env') === 'development') {
-        app.use(morgan('dev'));
-    }
+  if (app.get('env') === 'development') {
+    app.use(morgan('dev'));
+  }
 
-    // Set security http headers
-    if (app.get('env') === 'production') {
-        app.use(helmet());
-    }
-    
-    // Serving static files
-    app.use(express.static(path.join(`${__dirname}/../public`)));
+  // set security http headers
+  if (app.get('env') === 'production') {
+    app.use(helmet());
+  }
 
-    // Body parser
-    app.use(express.json({ limit: '10kb' }));
-    app.use(express.urlencoded({ extended: true, limit: '10kb' }));
+  // serving static files
+  app.use(express.static(path.join(`${__dirname}/../public`)));
 
-    // Method override
-    app.use(methodOverride('_method'));
+  // body parser
+  app.use(express.json({ limit: '10kb' }));
+  app.use(express.urlencoded({ extended: true, limit: '10kb' }));
 
-    // Data sanitization against nosql query injection
-    app.use(mongoSanitize());
+  // method override
+  app.use(methodOverride('_method'));
 
-    // Data sanitize against xss
-    app.use(xss());
+  // data sanitization against nosql query injection
+  app.use(mongoSanitize());
 
-    // Compression
-    app.use(compression());
+  // data sanitize against xss
+  app.use(xss());
 
-    // seedDB(); seed the DB
-    
-    // Express session
-    app.use(require('express-session')({
-        secret: 'I love NodeJS',
-        resave: false,
-        saveUninitialized: false
-    }));
+  // compression
+  app.use(compression());
 
-    // Connect flash
-    app.use(flash());
+  // seedDB(); seed the DB
 
-    // Passport configurattion
-    app.use(passport.initialize());
-    app.use(passport.session());
-    passport.use(new localStrategy(User.authenticate()));
-    passport.serializeUser(User.serializeUser());
-    passport.deserializeUser(User.deserializeUser());
+  // express session
+  app.use(
+    require('express-session')({
+      secret: 'I love NodeJS',
+      resave: false,
+      saveUninitialized: false,
+    })
+  );
 
-    app.use((req, res, next) => {
-        res.locals.currentUser = req.user;
-        res.locals.error = req.flash('error');
-        res.locals.success = req.flash('success');
-        res.locals.info = req.flash('info');
-        res.locals.currentPath = req.originalUrl;
-        res.locals.h = helpers;
-        next();
-    });
+  // connect flash
+  app.use(flash());
 
-    app.use('/', landing);
-    app.use('/campgrounds', campgroundRoutes);
-    app.use('/campgrounds/:id/comments', commentRoutes);
-    app.use('/users', register);
-    app.use('/auth', auth);
+  // passport configurattion
+  app.use(passport.initialize());
+  app.use(passport.session());
+  passport.use(new localStrategy(User.authenticate()));
+  passport.serializeUser(User.serializeUser());
+  passport.deserializeUser(User.deserializeUser());
 
-    app.all('*', (req, res, next) => {
-        next(new AppError(`Can't find ${req.originalUrl} on this server.`, 404));
-    });
+  app.use(async (req, res, next) => {
+    res.locals.currentUser = req.user;
+    res.locals.error = req.flash('error');
+    res.locals.success = req.flash('success');
+    res.locals.info = req.flash('info');
+    res.locals.currentPath = req.originalUrl;
+    res.locals.h = helpers;
+    next();
+  });
 
-    app.use(globalErrorHandler);
-}
+  // routes middleware
+  app.use('/', landing);
+  app.use('/campgrounds', campgroundRoutes);
+  app.use('/campgrounds/:id/comments', commentRoutes);
+  app.use('/users', register);
+  app.use('/auth', auth);
+
+  app.all('*', (req, res, next) => {
+    next(
+      new AppError(
+        `Can't find ${req.originalUrl} on this server.`,
+        StatusCodes.NOT_FOUND
+      )
+    );
+  });
+
+  app.use(globalErrorHandler);
+};
