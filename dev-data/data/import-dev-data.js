@@ -1,63 +1,72 @@
 const fs = require('fs');
-const dotenv = require('dotenv');
 const mongoose = require('mongoose');
+const dotenv = require('dotenv');
+require('colors');
 
-// Models
-const Campground = require('../../models/Campground');
-const Comment = require('../../models/Comment');
+// models
 const User = require('../../models/User');
+const Comment = require('../../models/Comment');
+const Campground = require('../../models/Campground');
 
 dotenv.config({ path: './variable.env' });
 
-// Db local
+// db local
 const dbLocal = process.env.MONGODB_URI;
 
-// MongoDB Connection
-mongoose.connect(dbLocal, {
+// MongoDB connection
+mongoose
+  .connect(dbLocal, {
     useNewUrlParser: true,
     useCreateIndex: true,
-    useFindAndModify: false
-})
-    .then(() => console.log(`Mongodb Connected → ${dbLocal}`));
+    useFindAndModify: false,
+  })
+  .then(() => console.log(`Mongodb Connected → ${dbLocal}`.gray.bold));
 
-// Read JSON file
-const campgrounds = JSON.parse(fs.readFileSync(`${__dirname}/campgrounds.json`, 'utf-8'));
-const comments = JSON.parse(fs.readFileSync(`${__dirname}/comments.json`, 'utf-8'));
+// read JSON file
+const campgrounds = JSON.parse(
+  fs.readFileSync(`${__dirname}/campgrounds.json`, 'utf-8')
+);
+const comments = JSON.parse(
+  fs.readFileSync(`${__dirname}/comments.json`, 'utf-8')
+);
 const users = JSON.parse(fs.readFileSync(`${__dirname}/users.json`, 'utf-8'));
 
-// Import data into db
+// import data into db
 const importData = async () => {
-    try {
-        await Campground.create(campgrounds);
-        await Comment.create(comments);
-        await User.create(users);
+  try {
+    await User.create(users);
+    await Comment.create(comments);
+    await Campground.create(campgrounds);
 
-        console.log('Data successfully loaded!💯✌👍👍👍👍👍👍👍👍💯✌');
-    } catch (err) {
-        console.log('👎👎👎👎👎👎👎👎 Error! The Error info is below but if you are importing sample data make sure to drop the existing database first with.\n\n\t npm run blowitallaway\n\n\n');
-        console.log(err);
-    }
-    process.exit();
+    console.log('Data successfully loaded!💯✌👍👍👍👍👍👍👍👍💯✌'.green.bold);
+  } catch (err) {
+    console.log(
+      '👎👎👎👎👎👎👎👎 Error! The Error info is below but if you are importing sample data make sure to drop the existing database first with.\n\n\t npm run blowitallaway\n\n\n'
+        .red.bold
+    );
+    console.log(err);
+  }
+  process.exit();
 };
 
-// Delete all data from db
+// delete all data from db
 const deleteData = async () => {
-    try {
-        console.log('😢😢 Goodbye Data...');
+  try {
+    console.log('😢😢 Goodbye Data...'.green.bold);
 
-        await Campground.deleteMany();
-        await Comment.deleteMany();
-        await User.deleteMany();
+    await User.deleteMany();
+    await Comment.deleteMany();
+    await Campground.deleteMany();
 
-        console.log('Data successfully deleted! 😭😂😭');
-    } catch (err) {
-        console.log(err);
-    }
-    process.exit();
+    console.log('Data successfully deleted! 😭😂😭'.green.bold);
+  } catch (err) {
+    console.log(err);
+  }
+  process.exit();
 };
 
 if (process.argv.includes('--import')) {
-    importData();
+  importData();
 } else if (process.argv.includes('--delete')) {
-    deleteData();
+  deleteData();
 }
